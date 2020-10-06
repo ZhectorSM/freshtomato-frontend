@@ -1,0 +1,53 @@
+$bg-color: black;
+$main-color: #ff0000;
+
+*,
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5{
+  text-align: center;
+}
+
+.menu-list {
+    padding: 1% 5%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+
+    li a{
+        text-decoration: none;
+        color: $main-color;
+    }
+}
+
+
+.content-main-container{
+    min-height: 85vh;
+    padding: 2% 5%;
+}
+
+
+header{    
+    background-color: $bg-color;
+    color: $main-color;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+}
+
+.header-left{
+    width: 40%;
+}
+
+.header-right{
+    width: 60%;
+}
+
+footer{
+    background-color: $bg-color;
+    color: $main-color;
+    height: 5vh;
+}
