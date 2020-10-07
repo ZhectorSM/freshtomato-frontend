@@ -1,6 +1,3 @@
-$bg-color: black;
-$main-color: #ff0000;
-
 *,
 body {
   margin: 0;
@@ -22,11 +19,11 @@ h5 {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+}
 
-  li a {
-    text-decoration: none;
-    color: $main-color;
-  }
+.menu-list li a {
+  text-decoration: none;
+  color: #ff0000;
 }
 
 .content-main-container {
@@ -35,8 +32,8 @@ h5 {
 }
 
 header {
-  background-color: $bg-color;
-  color: $main-color;
+  background-color: black;
+  color: #ff0000;
   display: flex;
   flex-direction: row;
   height: 10vh;
@@ -52,7 +49,7 @@ header {
 }
 
 footer {
-  background-color: $bg-color;
-  color: $main-color;
+  background-color: black;
+  color: #ff0000;
   height: 5vh;
 }

@@ -1,23 +1,25 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Menu = (props) => {
-
-    return (
-        <>          
-          <ul className="menu-list">
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/">Menu 1</Link>
-            </li>
-            <li>
-              <Link to="/">Menu 2</Link>
-            </li>
-          </ul>                      
-        </>
-    )
-}
+const Menu = props => {
+  return (
+    <>
+      <ul className="menu-list">
+        <li>
+          <Link to="/">+Add</Link>
+        </li>
+        <li>
+          <Link to="/">Delete</Link>
+        </li>
+        <li>
+          <Link to="/">Login</Link>
+        </li>
+        <li>
+          <Link to="/">Logout</Link>
+        </li>
+      </ul>
+    </>
+  );
+};
 
 export default Menu;
