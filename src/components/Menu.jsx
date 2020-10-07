@@ -6,10 +6,10 @@ const Menu = props => {
     <>
       <ul className="menu-list">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">+Add</Link>
         </li>
         <li>
-          <Link to="/">+Add</Link>
+          <Link to="/">Delete</Link>
         </li>
         <li>
           <Link to="/">Login</Link>
