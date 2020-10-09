@@ -4,9 +4,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import "./css/main.scss";
-import Video from "./components/Video";
+import MovieList from "./components/movieList";
+import AddMovie from "./components/addMovie";
+
 
 class App extends Component {
+
   render() {
     return (
       <>
@@ -14,7 +17,8 @@ class App extends Component {
           <Header />
           <div className="content-main-container">
             <Switch>
-              <Route exact path="/" component={Video} />
+              <Route exact path="/" component={MovieList} />
+              <Route exact path="/addMovie" component={AddMovie} />
             </Switch>
           </div>
           <Footer />
