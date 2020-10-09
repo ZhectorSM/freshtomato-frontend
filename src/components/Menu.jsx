@@ -6,13 +6,7 @@ const Menu = props => {
     <>
       <ul className="menu-list">
         <li>
-          <Link to="/">+Add</Link>
-        </li>
-        <li>
-          <Link to="/">Delete</Link>
-        </li>
-        <li>
-          <Link to="/">Login</Link>
+          <Link to="/addMovie">+Add</Link>
         </li>
         <li>
           <Link to="/">Logout</Link>

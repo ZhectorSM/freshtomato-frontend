@@ -1,11 +1,19 @@
+html{
+   color: whitesmoke;
+}
+
+
 .tour {
-  background: grey;
+
+  border: 2px solid black;
+  color: black;
   margin: 2rem 0;
   img {
     width: 100%;
     display: block;
     min-height: 13rem;
   }
+ 
 }
 
 .img-container {
@@ -47,4 +55,49 @@
       cursor: pointer;
     }
   }
+
+  .movieLength{
+    float: right;
+    color: black;
+    font-style: italic;
+      font-weight: 200;
+  }
+
+  .movieYear{
+    float: right;
+
+    span{
+      font-style: italic;
+      font-weight: 200;
+    }
+  }
+
+
+  .btnContainer{
+    text-align: center;
+  }
+
+  .updateBtn{
+    margin: 0 20 0 0px;
+    text-emphasis: none;
+    text-decoration: none;
+    color: red;
+
+    &:hover{
+      color: purple;
+    }
+  }
+
+  .deleteBtn{
+    margin: 0 0 0 20px;
+    text-emphasis: none;
+    text-decoration: none;
+    color: red;
+
+  &:hover{
+    color: purple;
+  }
+
+  }
+
 }
