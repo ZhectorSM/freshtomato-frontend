@@ -3,7 +3,7 @@ html{
 }
 
 
-.tour {
+.movie {
 
   border: 2px solid black;
   color: black;
@@ -24,7 +24,7 @@ html{
   display: block;
   top: 5%;
   right: 5%;
-  color: greenyellow;
+  color: black;
   font-size: 2rem;
   cursor: pointer;
   transition: all 0.3s linear;
@@ -34,12 +34,12 @@ html{
   opacity: 1;
 }
 
-.tour-info {
+.movie-info {
   padding: 1rem 0.5rem;
 
-  h3 {
+  .movieTitle {
     text-transform: uppercase;
-    color: greenyellow;
+    color: black;
   }
   h4 {
     text-transform: capitalize;
@@ -49,7 +49,7 @@ html{
   h5 {
     text-transform: capitalize;
     span {
-      color: greenyellow;
+      color: black;
       margin: 0.5rem;
       font-size: 1.2rem;
       cursor: pointer;
@@ -70,6 +70,10 @@ html{
       font-style: italic;
       font-weight: 200;
     }
+  }
+
+  .movieCategory{
+
   }
 
 

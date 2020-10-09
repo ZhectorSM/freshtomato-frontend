@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./movieList.scss";
-import Tour from "./Tour";
+import Movie from "./movie";
 import { movieData } from "./tourData";
 
 export default class MovieList extends Component {
@@ -14,7 +14,7 @@ export default class MovieList extends Component {
     return (
       <section className="tourlist">
         {movies.map(movie => (
-          <Tour key={movie.id} movie={movie} Tour />
+          <Movie key={movie.id} movie={movie} Tour />
         ))}
       </section>
     );

@@ -7,6 +7,8 @@ import "./css/main.scss";
 import MovieList from "./components/movieList";
 import AddMovie from "./components/addMovie";
 
+import axios from "axios";
+
 
 class App extends Component {
 
