@@ -12,23 +12,6 @@ import axios from "axios";
 
 class App extends Component {
 
-constructor(props){
-  super(props);
-  this.state={apiResponse: ""}
-}
-
-componentDidMount(){
-  axios.get("/").then(
-  console.log("hi")
-  )
-};
-
-
-
-
-
-
-
   render() {
     return (
       <>
