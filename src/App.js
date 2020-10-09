@@ -6,6 +6,8 @@ import NotFound from "./components/NotFound";
 import "./css/main.scss";
 import MovieList from "./components/movieList";
 import AddMovie from "./components/addMovie";
+import ListMovie from "./components/listMovie";
+
 
 import axios from "axios";
 
@@ -19,7 +21,7 @@ class App extends Component {
           <Header />
           <div className="content-main-container">
             <Switch>
-              <Route exact path="/" component={MovieList} />
+              <Route exact path="/" component={ListMovie} />
               <Route exact path="/addMovie" component={AddMovie} />
             </Switch>
           </div>

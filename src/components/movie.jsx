@@ -11,7 +11,7 @@ export default class NotFound extends Component {
       length,
       year,
       category,
-      rate
+      // rate
     } = this.props.movie; //for json  city, img, name
     if (this.props.movie) {
       return (
