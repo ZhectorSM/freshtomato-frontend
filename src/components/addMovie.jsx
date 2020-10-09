@@ -5,25 +5,41 @@ import axios from "axios";
 
 const AddMovie = () => {
     return (
+
       <div className="formContainer">
       <form onSubmit={(e)=> add(e)}>
       <label htmlFor="name">Movie title: </label>
+      <br/>
       <input type="text" name="name" id="name" />
+      <br/>
       <label htmlFor="description">Description: </label>
-      <textarea type="text" name="description" id="description"></textarea>
-      <label htmlFor="length">Movie length</label>
+      <br/>
+      <input type="text" name="description" id="description"/>
+      <br/>
+      <label htmlFor="length">Movie length:</label>
+      <br/>
       <input type="text" name="length" id="length" />
-      <label htmlFor="year">published year</label>
+      <br/>
+      <label htmlFor="year">published year:</label>
+      <br/>
       <input type="text" name="year" id="year" />
-      <label htmlFor="category">Category</label>
+      <br/>
+      <label htmlFor="category">Category:</label>
+      <br/>
       <input type="text" name="category" id="category" />
-      <label htmlFor="rate">Rating</label>
-      <input type="text" name="rate" id="rate" />
-      <label htmlFor="">Image URL</label>
+      <br/>
+      <label htmlFor="rate">Rating:</label>
+      <br/>
+      <input type="text" name="rate" id="rate"/>
+      <br/>
+      <label htmlFor="">Image URL:</label>
+      <br/>
       <input type="text" name="urlImage" id="urlImage" />
-      <button type="submit">Submit</button>
+      <br/>
+      <button id="submitBtn"type="submit">Submit</button>
       </form>
       </div>
+    
     )
 }
 
