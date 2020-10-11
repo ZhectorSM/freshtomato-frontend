@@ -56,10 +56,11 @@ function add(e) {
   }
   axios.post('http://localhost:8000/admin/createMovie', request)
   .then(res=>{
-    alert(res.response.data.msg);
+    alert(res.data.msg);
   })
   .catch(err =>{
     console.log(err);
+    alert(err.data.msg);
   })
 
 }
