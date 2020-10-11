@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from "axios";
+import '../css/listMovie.scss';
 
 
 
 const ListMovie =(req,res)=>{
     
-let list;
-    axios.get('http://localhost:8000/admin/', list)
-  .then(respond =>{
-    console.log(respond.data);
+const [listMovies, setListMovies] = useState([]);
+    
+ axios.get('http://localhost:8000/admin/listMovie')
+    .then(result =>{
+        console.log(result.data);
+        setListMovies(result.data)
   })
   .catch(err =>{
-      res.json({msg: err})
-    // console.log(err);
+    
+    console.log(err);
   })
+
+ 
+
+
 return(
-    <div>aaa</div>
-    )
-}
+<>
+    {listMovies.map(list =>(
+    <div className="movieContainer">
+    <img src={list.urlImage} alt=""/>
+    <h3 className="movieName">{list.name}</h3>
+    <h2>{list.year}</h2>
+
+    
+    </div>
+    
+        ))
+    }
+</>
+)}
 export default ListMovie;
