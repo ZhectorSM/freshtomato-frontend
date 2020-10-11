@@ -7,6 +7,7 @@ import "./css/main.scss";
 import MovieList from "./components/movieList";
 import AddMovie from "./components/addMovie";
 import ListMovie from "./components/listMovie";
+import EditMovie from "./components/editMovie";
 
 
 import axios from "axios";
@@ -23,6 +24,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={ListMovie} />
               <Route exact path="/addMovie" component={AddMovie} />
+              <Route exact path="/editMovie" component={EditMovie} />
             </Switch>
           </div>
           <Footer />

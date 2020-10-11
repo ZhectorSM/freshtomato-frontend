@@ -57,12 +57,14 @@ function add(e) {
   axios.post('http://localhost:8000/admin/createMovie', request)
   .then(res=>{
     alert(res.data.msg);
+    
   })
-  .catch(err =>{
+  .catch(err=>{
     console.log(err);
     alert(err.data.msg);
   })
 
+  e.target.reset();
 }
 
 export default AddMovie;
