@@ -28,6 +28,7 @@ return(
     <img src={list.urlImage} alt=""/>
     <h3 className="movieName">{list.name}</h3>
     <h2>{list.year}</h2>
+    <h2>{list.rate}</h2>
 
     
     </div>
