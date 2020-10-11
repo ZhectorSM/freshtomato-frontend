@@ -10,11 +10,11 @@ const AddMovie = () => {
       <form onSubmit={(e)=> add(e)}>
       <label htmlFor="name">Movie title: </label>
       <br/>
-      <input type="text" name="name" id="name" />
+      <input type="text" name="name" id="name" required="required" />
       <br/>
       <label htmlFor="description">Description: </label>
       <br/>
-      <input type="text" name="description" id="description"/>
+      <textarea type="text" name="description" id="description"/>
       <br/>
       <label htmlFor="length">Movie length:</label>
       <br/>
@@ -22,7 +22,7 @@ const AddMovie = () => {
       <br/>
       <label htmlFor="year">published year:</label>
       <br/>
-      <input type="text" name="year" id="year" />
+      <input type="number" name="year" id="year" />
       <br/>
       <label htmlFor="category">Category:</label>
       <br/>
@@ -55,8 +55,8 @@ function add(e) {
     urlImage: document.getElementById('urlImage').value
   }
   axios.post('http://localhost:8000/admin/createMovie', request)
-  .then(respond =>{
-    alert(respond.data.message);
+  .then(res=>{
+    alert(res.response.data.msg);
   })
   .catch(err =>{
     console.log(err);
