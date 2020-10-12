@@ -15,10 +15,10 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import NotFound from "./components/NotFound";
 import "./css/main.scss";
-import MovieList from "./components/movieList";
 import AddMovie from "./components/addMovie";
 import ListMovie from "./components/listMovie";
 import EditMovie from "./components/editMovie";
+import StarRating from "./components/rating/StarRating"
 
 
 // Check for token to keep user logged in
@@ -51,6 +51,7 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/addMovie" component={AddMovie} />
               <Route exact path="/editMovie" component={EditMovie} />
+              <Route exact path="/starRating" component={StarRating} />
               {/*<Route path="*" component={NotFound}/>*/}
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={ListMovie}/>
