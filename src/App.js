@@ -18,6 +18,9 @@ import "./css/main.scss";
 import MovieList from "./components/movieList";
 import AddMovie from "./components/addMovie";
 import ListMovie from "./components/listMovie";
+import EditMovie from "./components/editMovie";
+
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -46,9 +49,11 @@ class App extends Component {
               <Route exact path="/" component={Landing} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/addMovie" component={AddMovie} />
+              <Route exact path="/editMovie" component={EditMovie} />
               {/*<Route path="*" component={NotFound}/>*/}
               <Switch>
-                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+                <PrivateRoute exact path="/dashboard" component={ListMovie}/>
               </Switch>
             </div>
           </Router>

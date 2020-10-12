@@ -12,11 +12,12 @@
 }
 
 #description{
-    width: 200px;
-    height: 150px;
+    max-width: 200px;
+    max-height: 150px;
 }
 
 #submitBtn{
     margin-top: 20px;
     float: right;
 }
+
