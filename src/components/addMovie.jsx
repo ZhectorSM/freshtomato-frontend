@@ -58,7 +58,7 @@ function add(e) {
   .then(res=>{
     alert(res.data.msg);
   })
-  .catch(err =>{
+  .catch(err=>{
     console.log(err);
     alert(err.data.msg);
   })

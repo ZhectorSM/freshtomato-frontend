@@ -1,12 +1,31 @@
-.movieContainer{
+.movieContainer {
+  margin: 2rem 0;
+  img {
+    width: 100%;
+    display: block;
+    min-height: 13rem;
+  }
+  h3 {
+    color: greenyellow;
+  }
+  h4 {
     color: black;
-
-    img{
-        width: 140px;
-        height: 100px;
-    }
+  }
+  h5 {
+    color: black;
+  }
+  p {
+    color: black;
+    text-align: center;
+  }
+}
+.img-container {
+  position: relative;
+  width: 40%;
 }
 
-
-
-    
+.tourlist {
+  width: 70vw;
+  margin: 0 auto;
+  padding: 2rem 0;
+}

@@ -1,9 +1,8 @@
-html{
-   color: whitesmoke;
+html {
+  color: whitesmoke;
 }
 
 .movie {
-
   border: 2px solid black;
   color: black;
   margin: 2rem 0;
@@ -12,7 +11,6 @@ html{
     display: block;
     min-height: 13rem;
   }
- 
 }
 
 .img-container {
@@ -55,52 +53,48 @@ html{
     }
   }
 
-  .movieLength{
+  .movieLength {
     float: right;
     color: black;
     font-style: italic;
-      font-weight: 200;
+    font-weight: 200;
   }
 
-  .movieYear{
+  .movieYear {
     float: right;
 
-    span{
+    span {
       font-style: italic;
       font-weight: 200;
     }
   }
 
-  .movieCategory{
-
+  .movieCategory {
   }
 
-
-  .btnContainer{
+  .btnContainer {
     text-align: center;
   }
 
-  .updateBtn{
+  .updateBtn {
     margin: 0 20 0 0px;
     text-emphasis: none;
     text-decoration: none;
     color: red;
 
-    &:hover{
+    &:hover {
       color: purple;
     }
   }
 
-  .deleteBtn{
+  .deleteBtn {
     margin: 0 0 0 20px;
     text-emphasis: none;
     text-decoration: none;
     color: red;
 
-  &:hover{
-    color: purple;
+    &:hover {
+      color: purple;
+    }
   }
-
-  }
-
 }

@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import "./movie.scss";
 export default class NotFound extends Component {
-
-
   render() {
-    const { 
+    const {
       name,
       urlImage,
       description,
       length,
       year,
-      category,
+      category
       // rate
     } = this.props.movie; //for json  city, img, name
     if (this.props.movie) {
@@ -25,14 +23,23 @@ export default class NotFound extends Component {
           <div className="movie-info">
             <h3 className="movieTitle">{name}</h3>
             <h4>{description}</h4>
-            <p className="movieYear">published in <span>{year}</span></p><br/>
-            <p className="movieLength">{length} min</p><br/>
-            <p className="movieCategory">Category: {category}</p><br/>
-            <div className="btnContainer"><br/>
-            <a className="updateBtn" href="/updateMovie">Edit</a>
-            <a className="deleteBtn" href="/deleteMovie">Delete</a>
+            <p className="movieYear">
+              published in <span>{year}</span>
+            </p>
+            <br />
+            <p className="movieLength">{length} min</p>
+            <br />
+            <p className="movieCategory">Category: {category}</p>
+            <br />
+            <div className="btnContainer">
+              <br />
+              <a className="updateBtn" href="/updateMovie">
+                Edit
+              </a>
+              <a className="deleteBtn" href="/deleteMovie">
+                Delete
+              </a>
             </div>
-            
           </div>
         </article>
       );
