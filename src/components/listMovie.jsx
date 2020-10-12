@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/listMovie.scss";
+import StarRating from "../components/rating/StarRating"
 
 
 const ListMovie = (req, res) => {
@@ -38,12 +39,13 @@ const ListMovie = (req, res) => {
         <article className="movieContainer">
           <div className="img-container">
             <img src={list.urlImage} alt="" height="250px" />
-
+            <h3>{list._id}</h3>
             <h3>{list.name}</h3>
             <h4>{list.description}</h4>
             <p>{list.length}</p>
             <h5>category:{list.category}</h5>
             <h5>{list.rate}</h5>
+            <StarRating movieId={list._id}/>
           </div>
         </article>
       ))}
