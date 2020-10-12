@@ -1,11 +1,14 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/listMovie.scss";
+
 
 const ListMovie = (req, res) => {
   const [listMovies, setListMovies] = useState([]);
 
   useEffect(() => {    
+
 
 
     var config = {
@@ -47,4 +50,5 @@ const ListMovie = (req, res) => {
     </>
   );
 };
+
 export default ListMovie;
