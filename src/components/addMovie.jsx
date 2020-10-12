@@ -4,6 +4,8 @@ import axios from "axios";
 
 
 const AddMovie = () => {
+
+  
     return (
 
       <div className="formContainer">
@@ -44,6 +46,15 @@ const AddMovie = () => {
 }
 
 function add(e) {
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:8000/admin/listMovies',
+    headers: {
+        'x-auth-token': localStorage.getItem('jwtToken')
+    }
+  };
+
   e.preventDefault();
   let request = {
     name: document.getElementById('name').value,
@@ -54,10 +65,9 @@ function add(e) {
     rate: document.getElementById('rate').value,
     urlImage: document.getElementById('urlImage').value
   }
-  axios.post('http://localhost:8000/admin/createMovie', request)
+  axios(config, request)
   .then(res=>{
     alert(res.data.msg);
-    
   })
   .catch(err=>{
     console.log(err);
