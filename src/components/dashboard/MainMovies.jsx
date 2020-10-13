@@ -26,13 +26,14 @@ const MainMovies = () => {
 
     const openDialog = () => {  
         console.log("opnedlg");          
-        // setmovieDto(formInit);
+        // setmovieDto(movieInit);
         // setSubmitted(false);
         setShowDialog(true);        
     }
 
     const hideDialog = () => {   
-        // setSubmitted(false);     
+        setMovieDto(movieInit);
+        setSubmitted(false);     
         setShowDialog(false);
     }
 

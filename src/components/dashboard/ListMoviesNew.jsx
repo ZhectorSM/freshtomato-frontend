@@ -9,18 +9,36 @@ import { InputTextarea } from 'primereact/inputtextarea';
 import classNames from 'classnames';
 import 'primereact/resources/themes/saga-green/theme.css';
 import 'primereact/resources/primereact.min.css';
+import StarRating from "../rating/StarRating";
+import axios from 'axios';
+import {connect} from "react-redux";
 
 
 const ListMoviesNew = (props) => {
 
     const {movieDto,setMovieDto, submitted, setShowDialog} = props;
+    const [showRatingDialog, setShowRatingDialog] = useState(false);
+
+
+   
 
     const updateMovie = (rowData) => {
         setMovieDto({...rowData});
         setShowDialog(true);
     }
 
+    const rateMovie = (rowData) => {
+       
+       console.log("rateMovie", rowData);
+       setMovieDto({...rowData});
+       setShowRatingDialog(true);
+    }
 
+
+
+    const hideRatingDialog = () => {   
+        setShowRatingDialog(false);
+    }
       //generic input handler
     const inputChangeHandler = (event) => {     
         const { id, value } = event.target    //Destructuring event
@@ -46,12 +64,52 @@ const ListMoviesNew = (props) => {
         return (<img src={!rowData.urlImage=== false ? rowData.urlImage: "https://camblycontent.files.wordpress.com/2016/12/956610-tomato.jpg"} width="100px" height="100px" onError={(e) => e.target.src='https://camblycontent.files.wordpress.com/2016/12/956610-tomato.jpg'}/> )
     }
 
+
+    const [rating, setRating] = useState(null);
+    const [review, setReview] = useState("");
+
+    const sendRating = () =>{
+        const {user} = props.auth;
+       
+      
+        let ratingData = {
+            user : { id: user.id },
+            id: movieDto._id,
+            rate: rating,
+            review: review         
+          }
+
+        var config = {
+            method: 'post',
+            url: 'http://localhost:8000/user/rateMovie',
+            headers: {
+                'x-auth-token': localStorage.getItem('jwtToken')
+            },
+            data: ratingData
+          };
+       
+         axios(config)
+          .then(result => {
+            console.log(result.data.msg);
+            hideRatingDialog();
+            alert("Movie Rated. Thanks!")
+          })
+          .catch(err => {
+            console.log(err);
+          }); 
+    }
+
+
+
+
+
     const actionColumnTemplate = (rowData) => { 
         
         return (
             <>
                 <Button icon="pi pi-pencil" tooltip="Edit" className="p-button-rounded p-button-success p-mr-2" onClick={() => updateMovie(rowData)} />
                 <Button icon="pi pi-trash" tooltip="Delete" className="p-button-rounded p-button-warning p-mr-2" onClick={() => props.deleteMovie(rowData._id)} />
+                <Button icon="pi pi-star" tooltip="Rate" className="p-button-rounded p-button-info p-mr-2" onClick={() => rateMovie(rowData)} />
             </>
         )
     }
@@ -70,6 +128,15 @@ const ListMoviesNew = (props) => {
         <>
             <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={props.hideDialog} />
             <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={props.saveMovie} />
+        </>
+    
+    )
+
+
+    const dialogRatingFooter = (//this is a not s component       
+        <>
+            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideRatingDialog} />
+            <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={sendRating} />
         </>
     
     )
@@ -94,7 +161,7 @@ const ListMoviesNew = (props) => {
                 <Column field="length" header="Length"></Column>                             
                 <Column field="year" header="Year"></Column>                             
                 <Column field="category" header="Category"></Column>   
-                {/* <Column field="rate" header="Rate"></Column>    */}
+                {/* <Column field="rate" header="Rate"></Column>    */}                
                 <Column header="Actions" body={actionColumnTemplate} ></Column>                                          
             </DataTable>
             </div>   
@@ -133,8 +200,25 @@ const ListMoviesNew = (props) => {
             </Dialog>
 
 
+            <Dialog visible={showRatingDialog}  header="Rating" modal className="p-fluid dialog-movie" footer={dialogRatingFooter} onHide={hideRatingDialog}>               
+                <StarRating className="star" 
+                movieId={movieDto._id} 
+                rating={rating}
+                setRating={setRating}
+                review={review}
+                setReview={setReview}
+                />
+            </Dialog>
+
         </>
     )
 }
 
-export default ListMoviesNew
+
+const mapStateToProps = state => ({
+    auth: state.auth
+});
+
+export default connect(
+    mapStateToProps,
+)(ListMoviesNew);
