@@ -3,11 +3,20 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../css/listMovie.scss";
 import StarRating from "../components/rating/StarRating";
+import EditMovie from "../components/editMovie";
+
+import { Dialog } from 'primereact/dialog';
+import 'primereact/resources/themes/saga-green/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+ 
 
 const ListMovie = (req, res) => {
   const [listMovies, setListMovies] = useState([]);
   const [executed, setExecuted] = useState(false);
-  const history = useHistory();
+  const [editVisible, setEditVisible] = useState(false);
+  const [editMovieId, setEditMovieId] = useState(null);
+
 
 
   //get list of movies
@@ -34,9 +43,8 @@ const ListMovie = (req, res) => {
 
 
   //delete movie
-  const deleteMovie = (e, movieId) => {
-    e.preventDefault();
-    console.log("deleteing movie:" ,movieId);
+  const deleteMovie = (movieId) => {
+       console.log("deleteing movie:" ,movieId);
 
     var config = {
       method: "post",
@@ -61,12 +69,17 @@ const ListMovie = (req, res) => {
   }
 
 
+  const editMovie = (movieId) => {
+    setEditVisible(true);
+   setEditMovieId(movieId);
+
+  }
+
   return (
     <>
       
       {listMovies.map(list => (
-        <div className="movieContainer">
-          <form onSubmit={(e)=> deleteMovie(e, list._id)}>
+        <div className="movieContainer">         
           <div className="img-container">
             {/* <h3>{list._id}</h3> */}
             <h4>{list.name}</h4>
@@ -78,13 +91,20 @@ const ListMovie = (req, res) => {
               <span className="foo">{list.length}min</span>
             </h6>
             <StarRating className="star" movieId={list._id} />
-            <button onClick="">Edit</button>
-            <button id="submitBtn" type="submit">Submit</button>
-            
+            <button type="button" onClick={() => {editMovie(list._id)}}>Edit</button>
+            <button type="button" onClick={() => {deleteMovie(list._id)}}>Delete</button>
           </div>
-          </form>
+          
         </div>
       ))}
+
+
+
+
+      {/* dialog edit */}
+      <Dialog header="Edit Movie" className="dialog-form" visible={editVisible} closable={true}>
+          <EditMovie movieId={editMovieId}/>
+      </Dialog>      
       
     </>
   );

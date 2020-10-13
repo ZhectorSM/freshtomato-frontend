@@ -1,9 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import "../css/addMovie.scss";
 import axios from 'axios';
 import ListMovie from '../components/listMovie';
 
-const EditMovie =()=>{
+const EditMovie =(props)=>{
+
+    const movieInit = {
+      id : props.movieId,
+      name : "",
+      description : "",
+      text: "",
+      length : "",
+      year: 0,
+      category: "",
+      urlImage : ""
+    }
+
+    const [movieObj, setMovieObj] = useState(movieInit);
+    var data = JSON.stringify({"id":props.movieId});
+
+    useEffect(() => {
+      var data = JSON.stringify({"id":"5f7ecaa4e7f4b234cfd04649"});
+
+      var config = {
+        method: 'get',
+        url: 'http://localhost:8000/admin/getMovie',
+        headers: { 
+          'Content-Type': 'application/json'
+        },
+        data : data
+      };
+
+      axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    }, []);
+
 
     return (
     <>
@@ -11,7 +48,7 @@ const EditMovie =()=>{
       <form onSubmit={(e)=> edit(e)}> 
       <label htmlFor="name">Movie title: </label>
       <br/>
-    <input type="text" name="id" id="id" required="required" placeholder="id"/>
+    <input type="text" name="id" id="id" required="required" placeholder="id" value={props.movieId}/>
       
       <input type="text" name="name" id="name" required="required" />
       <br/>
