@@ -12,12 +12,14 @@ import 'primereact/resources/primereact.min.css';
 import StarRating from "../rating/StarRating";
 import axios from 'axios';
 import {connect} from "react-redux";
+import { Rating } from 'primereact/rating';
 
 
 const ListMoviesNew = (props) => {
 
     const {movieDto,setMovieDto, submitted, setShowDialog} = props;
     const [showRatingDialog, setShowRatingDialog] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
 
    
@@ -38,6 +40,7 @@ const ListMoviesNew = (props) => {
 
     const hideRatingDialog = () => {   
         setShowRatingDialog(false);
+        setMovieDto(props.movieInit);
     }
       //generic input handler
     const inputChangeHandler = (event) => {     
@@ -91,8 +94,9 @@ const ListMoviesNew = (props) => {
          axios(config)
           .then(result => {
             console.log(result.data.msg);
-            hideRatingDialog();
-            alert("Movie Rated. Thanks!")
+            hideRatingDialog();            
+            props.setExecuted(!props.executed);  
+            alert("Movie Rated. Thanks!");            
           })
           .catch(err => {
             console.log(err);
@@ -104,22 +108,42 @@ const ListMoviesNew = (props) => {
 
 
     const actionColumnTemplate = (rowData) => { 
-        
+        const {user} = props.auth;
         return (
             <>
-                <Button icon="pi pi-pencil" tooltip="Edit" className="p-button-rounded p-button-success p-mr-2" onClick={() => updateMovie(rowData)} />
-                <Button icon="pi pi-trash" tooltip="Delete" className="p-button-rounded p-button-warning p-mr-2" onClick={() => props.deleteMovie(rowData._id)} />
-                <Button icon="pi pi-star" tooltip="Rate" className="p-button-rounded p-button-info p-mr-2" onClick={() => rateMovie(rowData)} />
+                
+                
+
+                { isAdmin === true ?//blocker
+                   <>
+                    <Button icon="pi pi-pencil" tooltip="Edit" className="p-button-rounded p-button-success p-mr-2" onClick={() => updateMovie(rowData)} />
+                    <Button icon="pi pi-trash" tooltip="Delete" className="p-button-rounded p-button-warning p-mr-2" onClick={() => props.deleteMovie(rowData._id)} />
+                    <Button icon="pi pi-star" tooltip="Rate" className="p-button-rounded p-button-info p-mr-2" onClick={() => rateMovie(rowData)} />
+                   </> 
+                :
+                    <>
+                        <Button icon="pi pi-star" tooltip="Rate" className="p-button-rounded p-button-info p-mr-2" onClick={() => rateMovie(rowData)} />
+                    </>
+                } 
             </>
         )
     }
 
-    const LeftToolbarTemplate = () => {    
-        return (
+    const LeftToolbarTemplate = () => {   
+        const {user} = props.auth;  
+        return (            
+            <>
+            { isAdmin === true ?//blocker
             <>
                 <Button label="New" icon="pi pi-plus" className="p-button-success p-mr-2" onClick={props.openDialog} />                
+            </> 
+            :
+            <>               
             </>
-        )
+            }
+            </>
+        )       
+        
     }
 
 
@@ -142,6 +166,10 @@ const ListMoviesNew = (props) => {
     )
 
 
+    const ratingBodyTemplate = (rowData) => {
+        return (<><Rating value={rowData.rate} readonly cancel={false} tooltip={"Rate: " + rowData.rate}/> </>);
+    }
+
     return (
         <>
             <div className="card">
@@ -161,7 +189,7 @@ const ListMoviesNew = (props) => {
                 <Column field="length" header="Length"></Column>                             
                 <Column field="year" header="Year"></Column>                             
                 <Column field="category" header="Category"></Column>   
-                {/* <Column field="rate" header="Rate"></Column>    */}                
+                <Column field="rate" header="Reviews" body={ratingBodyTemplate} sortable></Column>               
                 <Column header="Actions" body={actionColumnTemplate} ></Column>                                          
             </DataTable>
             </div>   

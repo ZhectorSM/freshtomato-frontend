@@ -71,8 +71,7 @@ const ListMovie = (req, res) => {
 
   const editMovie = (movieId) => {
     setEditVisible(true);
-   setEditMovieId(movieId);
-
+    setEditMovieId(movieId);
   }
 
   return (
