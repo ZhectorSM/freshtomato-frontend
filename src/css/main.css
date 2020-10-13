@@ -54,5 +54,17 @@ footer {
   height: 5vh;
 }
 
+/* rating 
+hide radio button*/
+input[type="radio"] {
+  display: none;
+}
 
-
+/* look better the pointer*/
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+  position: relative;
+  left: 100px;
+  top: 65px;
+}
