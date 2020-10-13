@@ -12,32 +12,34 @@ class Dashboard extends Component {
         e.preventDefault();
         this.props.logoutUser();
     };
-    // componentDidMount() {
-    //     var config = {
-    //         method: 'get',
-    //         url: 'http://localhost:8000/user/listMovies',
-    //         headers: {
-    //             'x-auth-token': localStorage.getItem('jwtToken')
-    //         }
-    //     };
-    //     Axios(config)
-    //         .then(function (response) {
-    //             console.log(JSON.stringify(response.data));
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-
-    // }
 
     render() {
         const {user} = this.props.auth;
         console.log(user)
         return (
             <div>
-                <Header/>
+                {/* <Header/> */}
+                <div style={{height: "15vh"}} className="container valign-wrapper">
+                    <div className="row">
+                        <div className="col">
+                            <p>
+                                <b style={{color:"black"}}>Hey there,</b> {user.name.split(" ")[0]}                                
+                            </p>
+                            <button
+                                style={{
+                                    width: "120px",
+                                    borderRadius: "3px"
+                                }}
+                                onClick={this.onLogoutClick}
+                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                            >
+                                Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
                     <MainMovies/>
-                <Footer/>
+                {/* <Footer/> */}
             </div>
         );
     }

@@ -142,12 +142,15 @@ const MainMovies = () => {
                 movieDto={movieDto}
                 showDialog={showDialog}
                 submitted={submitted}
+                executed={executed}
+                setExecuted={setExecuted}
                 saveMovie={saveMovie}
                 deleteMovie={deleteMovie} 
                 setMovieDto={setMovieDto}
                 openDialog={openDialog}
                 hideDialog={hideDialog}
-                setShowDialog={setShowDialog}/>
+                setShowDialog={setShowDialog}
+                movieInit={movieInit}/>
         </>
     )
 }
