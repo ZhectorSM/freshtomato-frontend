@@ -6,44 +6,8 @@ import {connect} from "react-redux";
 
 
 const StarRating = (props)=> {
-    const [rating, setRating] = useState(null);
-    const [review, setReview] = useState("");
+    
     const  [hover, setHover] = useState(null);
-
-
-    const sendRating = () =>{
-        const {user} = props.auth;
-        console.log("sending rating: ",props.movieId,rating , review , user.id);
-        
-      
-        let ratingData = {
-            user : { id: user.id },
-            id: props.movieId,
-            rate: rating,
-            review: review         
-          }
-
-        var config = {
-            method: 'post',
-            url: 'http://localhost:8000/user/rateMovie',
-            headers: {
-                'x-auth-token': localStorage.getItem('jwtToken')
-            },
-            data: ratingData
-          };
-       
-         axios(config)
-          .then(result => {
-            console.log(result.data.msg);
-          })
-          .catch(err => {
-            console.log(err);
-          }); 
-
-
-    }
-
-
 
     return (
         <div>
@@ -56,11 +20,11 @@ const ratingValue= i + 1;
             type="radio" 
             name="rating" 
             value={ratingValue} 
-            onClick={()=> setRating(ratingValue)}
+            onClick={()=> props.setRating(ratingValue)}
             />
              <FaStar className="star"
-              color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-               size={100}
+              color={ratingValue <= (hover || props.rating) ? "#ffc107" : "#e4e5e9"}
+               size={65}
                onMouseEnter={()=> setHover(ratingValue)}
             onMouseLeave={()=> setHover(null)}
                />
@@ -68,9 +32,8 @@ const ratingValue= i + 1;
                          
         );
     })}
-<h3>The rating is: {rating}</h3>
-<input type="text" onChange={e=> setReview(e.target.value)}/>
-<input type="button" onClick={sendRating} value="Rate"/>
+<h5>The rating is: {props.rating}</h5>
+<input type="text" onChange={e=> props.setReview(e.target.value)}/>
     </div>
     );
 };
