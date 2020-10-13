@@ -51,10 +51,9 @@ class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/addMovie" component={AddMovie} />
               <Route exact path="/editMovie" component={EditMovie} />
-              <Route exact path="/starRating" component={StarRating} />
               {/*<Route path="*" component={NotFound}/>*/}
               <Switch>
-                <PrivateRoute exact path="/dashboard" component={ListMovie}/>
+                <PrivateRoute exact path="/dashboard" component={Dashboard}/>
               </Switch>
             </div>
           </Router>
