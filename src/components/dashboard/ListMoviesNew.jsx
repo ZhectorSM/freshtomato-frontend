@@ -16,10 +16,10 @@ import { Rating } from 'primereact/rating';
 
 
 const ListMoviesNew = (props) => {
-
+    const {user} = props.auth;
     const {movieDto,setMovieDto, submitted, setShowDialog} = props;
     const [showRatingDialog, setShowRatingDialog] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(user.isAdmin);
 
 
    
@@ -30,8 +30,8 @@ const ListMoviesNew = (props) => {
     }
 
     const rateMovie = (rowData) => {
-       
-       console.log("rateMovie", rowData);
+        
+
        setMovieDto({...rowData});
        setShowRatingDialog(true);
     }
@@ -72,7 +72,7 @@ const ListMoviesNew = (props) => {
     const [review, setReview] = useState("");
 
     const sendRating = () =>{
-        const {user} = props.auth;
+        
        
       
         let ratingData = {
@@ -108,7 +108,7 @@ const ListMoviesNew = (props) => {
 
 
     const actionColumnTemplate = (rowData) => { 
-        const {user} = props.auth;
+      
         return (
             <>
                 
@@ -130,7 +130,7 @@ const ListMoviesNew = (props) => {
     }
 
     const LeftToolbarTemplate = () => {   
-        const {user} = props.auth;  
+        
         return (            
             <>
             { isAdmin === true ?//blocker
