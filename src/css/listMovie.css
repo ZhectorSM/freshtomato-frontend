@@ -1,33 +1,85 @@
 .movieContainer {
   margin: 2rem 0;
+  width: 100vw;
+  height: auto;
+  background-color: gray;
+  background: cover;
 }
 
 .movieContainer img {
-  width: 100%;
+  width: 50%;
+  -o-object-fit: cover !important;
+  object-fit: cover;
+  font-family: "object-fit: cover!important;";
   display: block;
-  min-height: 13rem;
+  padding-top: 150px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
 }
 
-.movieContainer h3 {
+.movieContainer .img-container h3 {
   color: greenyellow;
+  position: relative;
+  top: -40px;
+  padding-left: 32%;
 }
 
-.movieContainer h4 {
+.movieContainer .img-container {
+  position: relative;
+  width: 100%;
+}
+
+.movieContainer .img-container h4 {
   color: black;
+  font-size: 50px;
+  position: relative;
+  top: 80px;
+}
+
+.movieContainer p {
+  color: black;
+  font-size: 35px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .movieContainer h5 {
   color: black;
+  position: relative;
+  left: 18%;
+  padding-top: 30px;
+}
+
+.movieContainer h6 {
+  color: black;
+  text-align: center;
+  font-size: 30px;
+  position: relative;
+  right: 60px;
+}
+
+.movieContainer h6 .zoo {
+  position: relative;
+  left: 5%;
+}
+
+.movieContainer h6 .foo {
+  position: relative;
+  left: 10%;
+}
+
+.movieContainer .star {
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .movieContainer p {
   color: black;
   text-align: center;
-}
-
-.img-container {
-  position: relative;
-  width: 40%;
 }
 
 .tourlist {
